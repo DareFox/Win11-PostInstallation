@@ -1,1 +1,3 @@
-bcdedit /set disabledynamictick yes
+function Disable-Dynamic-Tick {
+    bcdedit /set disabledynamictick yes
+}
