@@ -1,0 +1,26 @@
+{
+  "name": "win11-postinstallation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "merge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DareFox/Win11-PostInstallation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DareFox/Win11-PostInstallation/issues"
+  },
+  "homepage": "https://github.com/DareFox/Win11-PostInstallation#readme",
+  "dependencies": {
+    "ini": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/ini": "^1.3.31",
+    "@types/node": "^18.11.18"
+  }
+}
