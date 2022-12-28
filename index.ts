@@ -1,8 +1,9 @@
 import { FileData, ScriptData } from "./ts/interfaces";
 import { checkRequierements, generatePowershellCode } from "./ts/generate";
 import { getLocalPathScripts } from "./ts/nodejs";
+import * as fs from "fs"
+import { resolve } from "path";
 
-const fs = require("fs");
 const ini = require("ini");
 
 
@@ -86,4 +87,7 @@ function getListOfLocalScripts(): ScriptData[] {
   return scriptData;
 }
 
-console.log(generatePowershellCode(getListOfLocalScripts()))
+const generatedPs1 = resolve("./Win11-PostInstallation-Script.ps1")
+fs.writeFileSync(generatedPs1, generatePowershellCode(getListOfLocalScripts()))
+
+console.log(`Script is generated and written in ${generatedPs1} file`)
