@@ -1,0 +1,1 @@
+powershell C:\DualbootScript\dualboot.ps1
