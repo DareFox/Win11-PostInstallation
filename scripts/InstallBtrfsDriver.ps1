@@ -8,8 +8,6 @@ function Create-Temp-Folder {
 # [Script]
 # Name = Install-Btrfs-Driver
 # Description = Download and install latest version of WinBtrfs, driver for Btrfs storage filesystems
-
-# [Dependencies] 
 # Requires = null
 function Install-Btrfs-Driver {
     $TempFolder = Create-Temp-Folder

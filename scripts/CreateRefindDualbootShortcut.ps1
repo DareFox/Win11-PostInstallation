@@ -1,8 +1,6 @@
 # [Script]
 # Name = Create-Refind-Dualboot-Shortcut
 # Description = Create shortcut to change UEFI refind keys and reboot to other system
-#
-# [Dependencies] 
 # Requires = null
 function Create-Refind-Dualboot-Shortcut {
     $folder = New-Item "C:\DualbootRefind" -ItemType Directory

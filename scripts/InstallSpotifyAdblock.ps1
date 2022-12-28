@@ -1,8 +1,6 @@
 # [Script]
 # Name = Install-Spotify-Adblock
 # Description = Install Spotify with adblock
-
-# [Dependencies] 
 # Requires = null
 function Install-Spotify-Adblock {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; 

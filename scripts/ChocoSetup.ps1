@@ -1,8 +1,6 @@
 # [Script]
 # Name = Choco-Setup
 # Description = Install chocolatey
-#
-# [Dependencies] 
 # Requires = null
 function Choco-Setup {
     Set-ExecutionPolicy Bypass -Scope Process -Force; 
