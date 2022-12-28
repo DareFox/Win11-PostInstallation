@@ -8,7 +8,6 @@ function Create-Temp-Folder {
 function Install-Btrfs-Driver {
     $TempFolder = Create-Temp-Folder
     
-    $ProgressPreference = 'SilentlyContinue' # https://stackoverflow.com/a/43477248
     $RepoGithub = "maharmstone/btrfs"
 
     $RepoLatest = Invoke-WebRequest -Uri "https://api.github.com/repos/$RepoGithub/releases/latest"
@@ -19,6 +18,7 @@ function Install-Btrfs-Driver {
     $DriverArchiveLink = "https://github.com/$RepoGithub/releases/download/$Tag/$FileName.zip"
 
     try {
+        $ProgressPreference = 'SilentlyContinue' # https://stackoverflow.com/a/43477248
         Invoke-WebRequest -URI $DriverArchiveLink -OutFile "$TempFolder/$FileName"
         Expand-Archive "$TempFolder/$FileName" -DestinationPath "$TempFolder/btrfs-unpacked"
 
