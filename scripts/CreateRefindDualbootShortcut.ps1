@@ -3,7 +3,11 @@
 # Description = Create shortcut to change UEFI refind keys and reboot to other system
 # Requires = null
 function Create-Refind-Dualboot-Shortcut {
-    $folder = New-Item "C:\DualbootRefind" -ItemType Directory
+    $folder = "C:\DualbootRefind"
+    if (!(Test-Path $folder)) {
+        New-Item $folder -ItemType Directory
+    }
+
     $baseUrl = "https://raw.githubusercontent.com/DareFox/Win11-PostInstallation/main/resources/"
     $files = "RefindNextBoot.cs","RefindNextBoot.ps1","dualboot.ps1","dualboot.bat"
 
@@ -26,3 +30,5 @@ function Create-Refind-Dualboot-Shortcut {
     $bytes[0x15] = $bytes[0x15] -bor 0x20 #set byte 21 (0x15) bit 6 (0x20) ON
     [System.IO.File]::WriteAllBytes($ShortcutPath, $bytes)
 }
+
+Create-Refind-Dualboot-Shortcut
