@@ -22,6 +22,12 @@ function Create-Refind-Dualboot-Shortcut {
     $ShortcutObj.Save()
 
     $bytes = [System.IO.File]::ReadAllBytes("$Home\Desktop\ColorPix.lnk")
-    $bytes[0x15] = $bytes[0x15] -bor 0x20 # Run as Administrator
+
+    if ([Environment]::Is64BitProcess -ne [Environment]::Is64BitOperatingSystem) {
+        $bytes[0x15] = $bytes[0x15] -bor 0x20 #set byte 21 (0x15) bit 6 (0x20) ON
+    } else {
+        $bytes[0x2A] = $bytes[0x2A] -bor 0x20 # Run as Administrator
+        # https://stackoverflow.com/questions/28997799/how-to-create-a-run-as-administrator-shortcut-using-powershell#comment113731543_29002207
+    }
     $bytes | Set-Content $ShortcutPath -Encoding Byte
 }
