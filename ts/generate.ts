@@ -24,30 +24,30 @@ function generateFunctionsCalls(scripts: ScriptData[]) {
     var callStack = "" 
     
     scripts.forEach(script => {
-        var body = `Write-Host '♻️ Running ${script.name}....'\n`
+        var body = `Write-Host 'Running ${script.name}....'\n`
 
         if (script.requires !== null) {
             body += `if ($resultHash['${script.requires}']) {` + '\n'
             body += `    try {` + '\n'
             body += `        ${script.name}` + '\n'
             body += `        $resultHash['${script.name}'] = $true` + '\n'
-            body += `        Write-Host '✅ ${script.name} finished successfully'` + '\n'
+            body += `        Write-Host -ForegroundColor Black  -BackgroundColor Green '${script.name} finished successfully'` + '\n'
             body += `    } catch {` + '\n'
             body += `        $resultHash['${script.name}'] = $false` + '\n'
-            body += `        Write-Host '🛑 ${script.name} failed'` + '\n'
+            body += `        Write-Host -ForegroundColor Black  -BackgroundColor Red '${script.name} failed'` + '\n'
             body += `    }` + '\n'
             body += `} else {` + '\n'
-            body += `    Write-Host '⚠️ ${script.name} was cancelled due to requierement script fail (${script. requires})'` + '\n'
+            body += `    Write-Host -ForegroundColor Black  -BackgroundColor Yellow '${script.name} was cancelled due to requierement script fail (${script. requires})'` + '\n'
             body += `    $resultHash['${script.name}'] = $false` + '\n'
             body += `}` + '\n'
         } else {
             body += `try {` + '\n'
             body += `  ${script.name}` + '\n' 
             body += `    $resultHash['${script.name}'] = $true` + '\n'
-            body += `    Write-Host '✅ ${script.name} finished successfully'` + '\n'
+            body += `     Write-Host -ForegroundColor Black  -BackgroundColor Green '${script.name} finished successfully'` + '\n'
             body += `} catch {` + '\n'
             body += `    $resultHash['${script.name}'] = $false` + '\n'
-            body += `    Write-Host '🛑 ${script.name} failed'` + '\n'
+            body += `    Write-Host -ForegroundColor Black  -BackgroundColor Red '${script.name} failed'` + '\n'
             body += `}` + '\n'
         }
 
