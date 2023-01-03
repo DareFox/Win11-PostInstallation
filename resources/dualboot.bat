@@ -1,1 +1,1 @@
-powershell C:\DualbootScript\dualboot.ps1
+powershell C:\DualbootRefind\dualboot.ps1
