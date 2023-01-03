@@ -33,6 +33,7 @@ function generateFunctionsCalls(scripts: ScriptData[]) {
             body += `        $resultHash['${script.name}'] = $true` + '\n'
             body += `        Write-Host -ForegroundColor Black  -BackgroundColor Green '${script.name} finished successfully'` + '\n'
             body += `    } catch {` + '\n'
+            body += `        Write-Error $Error[0]`
             body += `        $resultHash['${script.name}'] = $false` + '\n'
             body += `        Write-Host -ForegroundColor Black  -BackgroundColor Red '${script.name} failed'` + '\n'
             body += `    }` + '\n'
@@ -42,10 +43,11 @@ function generateFunctionsCalls(scripts: ScriptData[]) {
             body += `}` + '\n'
         } else {
             body += `try {` + '\n'
-            body += `  ${script.name}` + '\n' 
+            body += `    ${script.name}` + '\n' 
             body += `    $resultHash['${script.name}'] = $true` + '\n'
             body += `     Write-Host -ForegroundColor Black  -BackgroundColor Green '${script.name} finished successfully'` + '\n'
             body += `} catch {` + '\n'
+            body += `    Write-Error $Error[0]`
             body += `    $resultHash['${script.name}'] = $false` + '\n'
             body += `    Write-Host -ForegroundColor Black  -BackgroundColor Red '${script.name} failed'` + '\n'
             body += `}` + '\n'
